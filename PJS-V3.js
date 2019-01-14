@@ -11,6 +11,14 @@ let todoList = {
         this.displayTodos();
     },
 
+    addTodoObj: function(todoText){
+        this.todos.push({
+            todoText: todoText,
+            completed: false
+        });
+        this.displayTodos();
+    },
+
     changeTodo: function(position, newValue){
         this.todos[position] = newValue;
         this.displayTodos();
