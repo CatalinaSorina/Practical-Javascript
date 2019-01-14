@@ -14,14 +14,21 @@ let todoList = {
         let todoObj = [];
         for (let i=0; i<this.todos.length; i++){
             if (typeof this.todos[i] === "object"){
-                todoObj.push(this.todos[i].todoText);
+                if (this.todos[i].completed === true) {
+                    todoObj.push('(x) '+this.todos[i].todoText);
+                }else{
+                    todoObj.push('( ) '+this.todos[i].todoText);
+                }
             }
         }
 
         if (todoObj.length === 0){
             console.log('The todo list have no object.');
         }else{
-            console.log('My todos:',todoObj);
+            console.log('My todo list:');
+            for (let i in todoObj){
+                console.log (todoObj[i]);
+            }
         }
     },
 
