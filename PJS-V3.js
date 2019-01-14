@@ -32,8 +32,8 @@ let todoList = {
         }
     },
 
-    addTodo: function(todo) {
-        this.todos.push(todo);
+    addTodo: function(todoText) {
+        this.todos.push(todoText);
         this.displayTodos();
     },
 
@@ -59,6 +59,41 @@ let todoList = {
         let todo = this.todos[position];
         todo.completed = !todo.completed;
         this.displayTodos();
+    },
+
+    toggleComplete: function(arr,trueFalse){
+        for(let i=0; i<arr.length;i++){
+            arr[i].completed = trueFalse;
+        }
+    },
+
+    toggleAll: function(){
+        let todoObj = [];
+        for (let i in this.todos){
+            if(typeof this.todos[i] === "object"){
+                todoObj.push(this.todos[i]);
+            }
+        }
+
+        let totalTodoObj = todoObj.length;
+        let allTrue = 0;
+        let allFalse=0;
+
+        for(let i in todoObj) {
+            if (todoObj[i].completed === true){
+                allTrue++;
+            }else{
+                allFalse++;
+            }
+        }
+
+        if(totalTodoObj === allTrue){
+            this.toggleComplete(todoObj,false);
+        }else if(totalTodoObj === allFalse){
+            this.toggleComplete(todoObj,true);
+        }
+
+        this.displayTodosText();
     },
 
     deleteTodo: function(position){
