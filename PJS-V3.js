@@ -9,6 +9,9 @@ let todoList = {
     addTodo: function(todo) {
         this.todos.push(todo);
         this.displayTodos();
-    }
+    },
 
+    changeTodo: function(position, newValue){
+        this.todos[position] = newValue;
+    }
 };
