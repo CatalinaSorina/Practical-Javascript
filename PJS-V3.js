@@ -283,3 +283,14 @@ function createButton(text){
     button.textContent = text;
     return button;
 };
+
+// bind = return the copy of the function and change the this with the parameter chosen
+
+// ex: function name(x,y){
+//     console.log(this);
+// } 
+// name.bind('my name') => prints 'my name'
+// name() => prints window
+
+// apply or call is like bind but runs immediatly
+// name.apply('my name',[x,y]) or name.call('my name',x,y)
