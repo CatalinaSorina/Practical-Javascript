@@ -14,23 +14,36 @@ let todoList = {
     displayTodosText: function() {
         //debugger;
         let todoObj = [];
-        for (let i=0; i<this.todos.length; i++){
-            if (typeof this.todos[i] === "object"){
-                if (this.todos[i].completed === true) {
-                    todoObj.push('(x) '+this.todos[i].todoText);
-                }else{
-                    todoObj.push('( ) '+this.todos[i].todoText);
-                }
+
+        // for (let i=0; i<this.todos.length; i++){
+        //     if (typeof this.todos[i] === "object"){
+        //         if (this.todos[i].completed === true) {
+        //             todoObj.push('(x) '+this.todos[i].todoText);
+        //         }else{
+        //             todoObj.push('( ) '+this.todos[i].todoText);
+        //         }
+        //     }
+        // }
+
+        this.todos.forEach(function(todo){
+            if (typeof todo === "object"){
+                todoObj.push('(x) '+todo.todoText);
+            }else{
+                todoObj.push('( ) '+todo.todoText);
             }
-        }
+        });
 
         if (todoObj.length === 0){
             console.log('The todo list have no object.');
         }else{
             console.log('My todo list:');
-            for (let i in todoObj){
-                console.log (todoObj[i]);
-            }
+            // for (let i in todoObj){
+            //     console.log (todoObj[i]);
+            // }
+
+            todoObj.forEach(function(todo){
+                console.log(todo);
+            });
         }
     },
 
@@ -70,31 +83,51 @@ let todoList = {
 
     toggleComplete: function(arr,trueFalse){
         //debugger;
-        for(let i=0; i<arr.length;i++){
-            arr[i].completed = trueFalse;
-        }
+
+        // for(let i=0; i<arr.length;i++){
+        //     arr[i].completed = trueFalse;
+        // }
+
+        arr.forEach(function(todo){
+            todo.completed = trueFalse;
+        });
     },
 
     toggleAll: function(){
         //debugger;
         let todoObj = [];
-        for (let i in this.todos){
-            if(typeof this.todos[i] === "object"){
-                todoObj.push(this.todos[i]);
+
+        // for (let i in this.todos){
+        //     if(typeof this.todos[i] === "object"){
+        //         todoObj.push(this.todos[i]);
+        //     }
+        // }
+
+        this.todos.forEach(function(todo){
+            if(typeof todo === "object"){
+                todoObj.push(todo);
             }
-        }
+        });
 
         let totalTodoObj = todoObj.length;
         let allTrue = 0;
         let allFalse=0;
 
-        for(let i in todoObj) {
-            if (todoObj[i].completed === true){
+        // for(let i in todoObj) {
+        //     if (todoObj[i].completed === true){
+        //         allTrue++;
+        //     }else{
+        //         allFalse++;
+        //     }
+        // }
+
+        todoObj.forEach(function(todo){
+            if (todo.completed === true){
                 allTrue++;
             }else{
                 allFalse++;
             }
-        }
+        });
 
         if(totalTodoObj === allTrue){
             this.toggleComplete(todoObj,false);
@@ -186,3 +219,13 @@ let view = {
         }
     }
 };
+
+function runDebugger(functionName){
+    debugger;
+    functionName();
+}
+
+function clock(functionName, waitSeconds){
+    const miliseconds=waitSeconds*1000;
+    setTimeout(functionName,miliseconds);
+}
