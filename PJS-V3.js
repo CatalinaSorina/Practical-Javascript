@@ -3,6 +3,7 @@ let todoList = {
     todos: ['item 1',{todoText: "object 1",completed: true},'item 2','item 3', {todoText: "object 2",completed: true}],
     
     displayTodos: function() {
+        debugger;
         if (this.todos.length === 0){
             console.log ('Your todo list is empty!');
         }else{
@@ -11,7 +12,7 @@ let todoList = {
     },
 
     displayTodosText: function() {
-        //debugger;
+        debugger;
         let todoObj = [];
         for (let i=0; i<this.todos.length; i++){
             if (typeof this.todos[i] === "object"){
@@ -34,11 +35,13 @@ let todoList = {
     },
 
     addTodo: function(todoText) {
+        debugger;
         this.todos.push(todoText);
         this.displayTodos();
     },
 
     addTodoObj: function(todoText){
+        debugger;
         this.todos.push({
             todoText: todoText,
             completed: false
@@ -47,28 +50,33 @@ let todoList = {
     },
 
     changeTodo: function(position, newValue){
+        debugger;
         this.todos[position] = newValue;
         this.displayTodos();
     },
 
     changeTodoObj: function(position, todoText){
+        debugger;
         this.todos[position].todoText = todoText;
         this.displayTodos();
     },
 
     toggleCompleted: function(position){
+        debugger;
         let todo = this.todos[position];
         todo.completed = !todo.completed;
         this.displayTodos();
     },
 
     toggleComplete: function(arr,trueFalse){
+        debugger;
         for(let i=0; i<arr.length;i++){
             arr[i].completed = trueFalse;
         }
     },
 
     toggleAll: function(){
+        debugger;
         let todoObj = [];
         for (let i in this.todos){
             if(typeof this.todos[i] === "object"){
@@ -98,6 +106,7 @@ let todoList = {
     },
 
     deleteTodo: function(position){
+        debugger;
         this.todos.splice(position, 1);
         this.displayTodos();
     }
@@ -107,11 +116,13 @@ let dispalyButton = document.getElementById("displayTodoButton");
 //console.log(dispalyButton);
 
 dispalyButton.addEventListener("click", function(){
+    debugger;
     todoList.displayTodosText();
 });
 
 let toggleButton = document.getElementById("toggleAllButton");
 
 toggleButton.addEventListener("click",function(){
+    debugger;
     todoList.toggleAll();
 });
