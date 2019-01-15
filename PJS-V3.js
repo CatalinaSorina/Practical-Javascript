@@ -1,6 +1,6 @@
 
 let todoList = {
-    todos: ['item 1',{todoText: "object 1",completed: true},'item 2','item 3', {todoText: "object 2",completed: false}],
+    todos: ['item 1',{todoText: "object 1",completed: true},'item 2','item 3', {todoText: "object 2",completed: true}],
     
     displayTodos: function() {
         if (this.todos.length === 0){
@@ -11,6 +11,7 @@ let todoList = {
     },
 
     displayTodosText: function() {
+        //debugger;
         let todoObj = [];
         for (let i=0; i<this.todos.length; i++){
             if (typeof this.todos[i] === "object"){
@@ -101,3 +102,16 @@ let todoList = {
         this.displayTodos();
     }
 };
+
+let dispalyButton = document.getElementById("displayTodoButton");
+//console.log(dispalyButton);
+
+dispalyButton.addEventListener("click", function(){
+    todoList.displayTodosText();
+});
+
+let toggleButton = document.getElementById("toggleAllButton");
+
+toggleButton.addEventListener("click",function(){
+    todoList.toggleAll();
+});
