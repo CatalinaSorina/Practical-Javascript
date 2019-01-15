@@ -285,6 +285,7 @@ function createButton(text){
 };
 
 // bind = return the copy of the function and change the this with the parameter chosen
+// if a function is defined with bind, it wont bind again anymore
 
 // ex: function name(x,y){
 //     console.log(this);
@@ -294,3 +295,19 @@ function createButton(text){
 
 // apply or call is like bind but runs immediatly
 // name.apply('my name',[x,y]) or name.call('my name',x,y)
+
+// Callback functions
+
+function sound(numSteps){
+    let s="";
+    for(let i=0; i<numSteps; i++){
+        s+="tap ";
+    }
+    return s;
+}
+
+function walk(steps,cb){
+    console.log(cb(steps));
+}
+
+// callback function = sound
