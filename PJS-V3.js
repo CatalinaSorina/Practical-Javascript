@@ -238,42 +238,46 @@ let view = {
 
         todoList.todos.forEach(function(todo,position){
             let todoLi = document.createElement("li");
-            //todoLi.id = position;
-            let deleteButton = createButton ("delete");
-            let checkButton;
+            todoLi.id = position;
+            let deleteButton = createButton ("x");
+            let checkButton = createButton ("check");
             let changeButton = createButton ("change");
+            checkButton.textContent = '\u{2713}';
             let todoTextInput = document.createElement("input");
-            todoTextInput.id = "todo"+position;
+            todoTextInput.id = "text"+position;
+            
+            todoLi.appendChild(checkButton);
 
             if(todo.completed === false){
-                todoLi.textContent = "( ) ";
                 todoTextInput.value = todo.todoText;
-                checkButton = createButton ("check");
+                todoTextInput.style.color = "green";
+                checkButton.style.border = "1px groove darkred";
+                checkButton.style.backgroundColor = "rgb(255, 184, 184)";
+                checkButton.style.color = "rgb(255, 184, 184)";
             }else{
-                todoLi.textContent = "(x) ";
                 todoTextInput.value = todo.todoText;
-                checkButton = createButton ("uncheck");
+                todoTextInput.style.textDecoration = "line-through";
+                todoTextInput.style.color = "red";
             }
 
             deleteButton.addEventListener("click",function(){
                 todoList.deleteTodo(position+1);
                 view.displayTodos();
             });
-
+    
             checkButton.addEventListener("click",function(){
                 todoList.toggleCompleted(position+1);
                 view.displayTodos();
             });
-
+    
             changeButton.addEventListener("click",function(){
-                let txt = document.getElementById("todo"+position).value();
-                todoList.changeTodo(position+1,txt);
+                let txt = todoTextInput.value;
+                todoList.changeTodoObj(position+1,txt);
                 view.displayTodos();
             });
 
             todoLi.appendChild(todoTextInput);
             todoLi.appendChild(deleteButton);
-            todoLi.appendChild(checkButton);
             todoLi.appendChild(changeButton);
 
             todosOl.appendChild(todoLi);
@@ -294,6 +298,7 @@ function clock(functionName, waitSeconds){
 function createButton(text){
     let button = document.createElement("button");
     button.textContent = text;
+    button.className = text+"Button";
     return button;
 };
 
@@ -324,3 +329,20 @@ function walk(steps,cb){
 }
 
 // callback function = sound
+
+// document.querySelector("ol").addEventListener("click",function(event){
+//     let elementClicked = event.target;
+//     let liID=parseInt(event.target.parentNode.id);
+
+//     if (elementClicked.className === "deleteButton"){
+//         todoList.deleteTodo(liID+1);
+//         view.displayTodos();
+//     }else if (elementClicked.className === "checkButton" || elementClicked.className === "uncheckButton" ){
+//         todoList.toggleCompleted(liID+1);
+//         view.displayTodos();
+//     }else if (elementClicked.className === "changeButton"){
+//         let txt = document.getElementById("text"+liID).value;
+//         todoList.changeTodo(liID+1,txt);
+//         view.displayTodos();
+//     }
+// });

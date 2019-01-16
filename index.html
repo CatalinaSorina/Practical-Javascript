@@ -2,38 +2,92 @@
 <html>
 <head>
     <title>Practical Javascript GZ</title>
-    <style></style>
+    <style>
+
+        .wrap {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+        }
+
+        h1 {
+            color:darkblue;
+        }
+
+        button {
+            color: white;
+            background-color: darkblue;
+            border-radius: 12px;
+            margin:5px;
+            outline: 0;
+        }
+
+        .xButton {
+            background-color: red;
+            border: 1px groove darkred;
+        }
+
+        .checkButton {
+            background-color: lightgreen;
+            border: 1px groove darkgreen;
+            color: green;
+        }
+
+        .changeButton {
+            background-color: orange;
+            border: 1px groove darkorange;
+        }
+
+        input {
+            text-align:center;
+            border:1px solid darkorange;
+            border-radius: 4px;
+            background-color: rgb(255, 227, 196);
+        }
+
+        ol {
+            align-self: center;
+        }
+
+        li {
+            text-align: left;
+        }
+
+    </style>
 </head>
 <body>
-    <h1>Todo List</h1>
+    <div class="wrap">
+        <h1>Todo List:</h1>
 
-    <div>
-        <!--<button id="displayTodoButton" onclick="handlers.displayTodos()">Display Todos</button>-->
-        <button id="toggleAllButton" onclick="handlers.toggleAll()">Toggle All</button>
+        <div>
+            <!--<button id="displayTodoButton" onclick="handlers.displayTodos()">Display Todos</button>-->
+        </div>
+
+        <div>
+            <button onclick="handlers.addTodo()">Add</button>
+            <input id="addTodoTextInput" type="text">
+            <button id="toggleAllButton" onclick="handlers.toggleAll()">Toggle All</button>
+        </div>
+
+        <!--<div>
+            <button onclick="handlers.changeTodo()">Change todo</button>
+            <input id="todoPosition" type="number">
+            <input id="todoText" type="text">
+        </div>
+
+        <div>
+            <button onclick="handlers.deleteTodo()">Delete</button>
+            <input id="deleteTodoPosition" type="number">
+        </div>
+
+        <div>
+            <button onclick="handlers.toggleCompleted()">Toggle Completed</button>
+            <input id="toggleCompletedPositionInput" type="number">
+        </div>-->
+
+        <ol></ol>
     </div>
-
-    <div>
-        <button onclick="handlers.addTodo()">Add</button>
-        <input id="addTodoTextInput" type="text">
-    </div>
-
-    <div>
-        <button onclick="handlers.changeTodo()">Change todo</button>
-        <input id="todoPosition" type="number">
-        <input id="todoText" type="text">
-    </div>
-
-    <!--<div>
-        <button onclick="handlers.deleteTodo()">Delete</button>
-        <input id="deleteTodoPosition" type="number">
-    </div>
-
-    <div>
-        <button onclick="handlers.toggleCompleted()">Toggle Completed</button>
-        <input id="toggleCompletedPositionInput" type="number">
-    </div>-->
-
-    <ol></ol>
 
     <script src="PJS-V3.js"></script>
 </body>
